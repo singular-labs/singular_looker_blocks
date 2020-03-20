@@ -236,6 +236,14 @@ view: marketing_data {
     value_format_name: usd
   }
 
+  measure: cpe {
+    label: "Cost Per Conversion"
+    type: number
+    description: " spend / conversions"
+    sql:  ${cost} / ${conversions} ;;
+    value_format_name: usd
+  }
+
   measure: conversions {
     type: sum
     description: "Conversions"
