@@ -220,6 +220,22 @@ view: marketing_data {
     value_format_name: percent_2
   }
 
+  measure: cpc {
+    label: "CPC"
+    type: number
+    description: "Cost Per Click (spend / clicks)"
+    sql:  ${cost} / ${clicks} ;;
+    value_format_name: usd
+  }
+
+  measure: cpm {
+    label: "CPM"
+    type: number
+    description: "Cost Per Milli-Impressions (spend / impressions * 1000)"
+    sql:  ${cost} / ${impressions} * 100 ;;
+    value_format_name: usd
+  }
+
   measure: conversions {
     type: sum
     description: "Conversions"
