@@ -208,7 +208,7 @@ view: marketing_data {
     type: number
     label: "CTR"
     description: "Click Rate (clicks / impressions)"
-    sql:  ${clicks} / ${impressions} ;;
+    sql:  ${clicks} / nullif(${impressions},0) ;;
     value_format_name: percent_2
   }
 
@@ -216,7 +216,7 @@ view: marketing_data {
     label: "CVR"
     type: number
     description: "Conversion Rate (conversions / clicks)"
-    sql:  ${conversions} / ${clicks} ;;
+    sql:  ${conversions} / nullif(${clicks}, 0) ;;
     value_format_name: percent_2
   }
 
@@ -224,7 +224,7 @@ view: marketing_data {
     label: "CPC"
     type: number
     description: "Cost Per Click (spend / clicks)"
-    sql:  ${cost} / ${clicks} ;;
+    sql:  ${cost} / nullif(${clicks}, 0) ;;
     value_format_name: usd
   }
 
@@ -232,7 +232,7 @@ view: marketing_data {
     label: "CPM"
     type: number
     description: "Cost Per Milli-Impressions (spend / impressions * 1000)"
-    sql:  ${cost} / ${impressions} * 100 ;;
+    sql:  ${cost} / nullif(${impressions} * 100, 0) ;;
     value_format_name: usd
   }
 
@@ -240,7 +240,7 @@ view: marketing_data {
     label: "Cost Per Conversion"
     type: number
     description: " spend / conversions"
-    sql:  ${cost} / ${conversions} ;;
+    sql:  ${cost} / nullif(${conversions}, 0) ;;
     value_format_name: usd
   }
 

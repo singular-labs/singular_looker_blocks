@@ -4,7 +4,7 @@
   elements:
   - title: Conversions By Geo
     name: Conversions By Geo
-    model: demo_etl
+    model: singular_block
     explore: marketing_data
     type: looker_map
     fields: [marketing_data.country_field, marketing_data.conversions]
@@ -18,7 +18,7 @@
     height: 7
   - title: "# Channels"
     name: "# Channels"
-    model: demo_etl
+    model: singular_block
     explore: marketing_data
     type: single_value
     fields: [marketing_data.total_channels]
@@ -31,7 +31,7 @@
     height: 6
   - title: "# Campaigns"
     name: "# Campaigns"
-    model: demo_etl
+    model: singular_block
     explore: marketing_data
     type: single_value
     fields: [marketing_data.total_campaigns]
@@ -44,7 +44,7 @@
     height: 3
   - title: CPM
     name: CPM
-    model: demo_etl
+    model: singular_block
     explore: marketing_data
     type: single_value
     fields: [marketing_data.impressions, marketing_data.cost]
@@ -80,7 +80,7 @@
     height: 3
   - title: CTR
     name: CTR
-    model: demo_etl
+    model: singular_block
     explore: marketing_data
     type: single_value
     fields: [marketing_data.impressions, marketing_data.clicks]
@@ -118,7 +118,7 @@
     height: 3
   - title: Keyword Breakdown
     name: Keyword Breakdown
-    model: demo_etl
+    model: singular_block
     explore: marketing_data
     type: looker_grid
     fields: [marketing_data.keyword, marketing_data.impressions, marketing_data.clicks,
@@ -167,7 +167,7 @@
     height: 6
   - title: Channel Level
     name: Channel Level
-    model: demo_etl
+    model: singular_block
     explore: marketing_data
     type: looker_grid
     fields: [marketing_data.source, marketing_data.impressions, marketing_data.ctr,
@@ -220,7 +220,7 @@
     height: 6
   - title: CPC
     name: CPC
-    model: demo_etl
+    model: singular_block
     explore: marketing_data
     type: single_value
     fields: [marketing_data.cpc]
@@ -256,7 +256,7 @@
     height: 3
   - title: Cost Per Conversion
     name: Cost Per Conversion
-    model: demo_etl
+    model: singular_block
     explore: marketing_data
     type: single_value
     fields: [marketing_data.cpe]
@@ -289,7 +289,7 @@
     height: 5
   - title: Spend
     name: Spend
-    model: demo_etl
+    model: singular_block
     explore: marketing_data
     type: single_value
     fields: [marketing_data.cost, marketing_data.date_week]
@@ -334,7 +334,7 @@
     default_value: 7 days
     allow_multiple_values: true
     required: false
-    model: demo_etl
+    model: singular_block
     explore: marketing_data
     listens_to_filters: []
     field: marketing_data.date_date
@@ -344,7 +344,7 @@
     default_value: ''
     allow_multiple_values: true
     required: false
-    model: demo_etl
+    model: singular_block
     explore: marketing_data
     listens_to_filters: []
     field: marketing_data.source
