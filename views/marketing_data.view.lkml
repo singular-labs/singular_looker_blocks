@@ -193,7 +193,7 @@ view: marketing_data {
     description: "Impressions"
     sql:  ${adn_impressions} ;;
     drill_fields: [source, adn_campaign_name, adn_sub_campaign_name]
-    value_format: "#,##0"
+    value_format_name: decimal_0
   }
 
   measure: clicks {
@@ -201,7 +201,7 @@ view: marketing_data {
     description: "Clicks"
     sql:  ${adn_clicks} ;;
     drill_fields: [source, adn_campaign_name, adn_sub_campaign_name]
-    value_format: "#,##0"
+    value_format_name: decimal_0
   }
 
   measure: ctr {
@@ -211,12 +211,19 @@ view: marketing_data {
     value_format_name: percent_2
   }
 
+  measure: cvr {
+    type: number
+    description: "Click Rate"
+    sql:  ${adn_installs} / ${clicks} ;;
+    value_format_name: percent_2
+  }
+
   measure: conversions {
     type: sum
     description: "Conversions"
     sql:  ${adn_installs} ;;
     drill_fields: [source, adn_campaign_name, adn_sub_campaign_name]
-    value_format: "#,##0"
+    value_format_name: decimal_0
   }
 
   measure: cost {
@@ -224,14 +231,14 @@ view: marketing_data {
     description: "Spend"
     sql:  ${adn_cost} ;;
     drill_fields: [source, adn_campaign_name, adn_sub_campaign_name]
-    value_format: "$#,##0.00"
+    value_format_name: usd
   }
 
   measure: total_channels {
     type: count_distinct
     description: "Active Channels"
     sql:  ${source} ;;
-    value_format: "#,##0"
+    value_format_name: decimal_0
   }
 
   measure: total_campaigns {
@@ -239,6 +246,6 @@ view: marketing_data {
     type: count_distinct
     description: "Active Campaigns"
     sql:  ${adn_campaign_name} ;;
-    value_format: "#,##0"
+    value_format_name: decimal_0
   }
 }
