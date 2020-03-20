@@ -206,15 +206,17 @@ view: marketing_data {
 
   measure: ctr {
     type: number
-    description: "Click Rate"
+    label: "CTR"
+    description: "Click Rate (clicks / impressions)"
     sql:  ${clicks} / ${impressions} ;;
     value_format_name: percent_2
   }
 
   measure: cvr {
+    label: "CVR"
     type: number
-    description: "Click Rate"
-    sql:  ${adn_installs} / ${clicks} ;;
+    description: "Conversion Rate (conversions / clicks)"
+    sql:  ${conversions} / ${clicks} ;;
     value_format_name: percent_2
   }
 
