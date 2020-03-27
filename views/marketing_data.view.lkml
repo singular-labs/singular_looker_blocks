@@ -3,6 +3,7 @@ view: marketing_data {
 
   dimension_group: date {
     type: time
+    label: "" # we only have one date field
     timeframes: [
       raw,
       date,
@@ -19,8 +20,14 @@ view: marketing_data {
   dimension: source {
     type: string
     sql: ${TABLE}."source" ;;
-    drill_fields: [source, adn_campaign_name, adn_sub_campaign_name]
+    drill_fields: [adn_account_name, adn_campaign_name, adn_sub_campaign_name, country_field]
     description: "The data source name, usually the name of the ad network."
+
+    link: {
+      label: "{{value}} Dashboard"
+      url: "/dashboards/singular_block::source_drilldown?Channel={{ value | encode_uri }}"
+      icon_url: "http://www.looker.com/favicon.ico"
+    }
   }
 
   dimension: adn_account_name {
@@ -33,12 +40,19 @@ view: marketing_data {
   dimension: adn_campaign_name {
     label: "Campaign"
     type: string
+    #drill_fields: [adn_sub_campaign_name, keyword, country_field]
     sql: ${TABLE}."adn_campaign_name" ;;
     description: "The exact campaign name as reported by the ad network."
+    link: {
+      label: "{{value}} Dashboard"
+      url: "/dashboards/singular_block::campaign_drilldown?Campaign={{ value | encode_uri }}&Channel="
+      icon_url: "http://www.looker.com/favicon.ico"
+    }
   }
 
   dimension: adn_sub_adnetwork_name {
     type: string
+    drill_fields: [adn_sub_campaign_name, country_field]
     label: "Sub Adnetwork"
     sql: ${TABLE}."adn_sub_adnetwork_name" ;;
     description: "The sub-ad-network name where applicable. This field contains a subdivision of the ad network, as reported by the ad network itself."
@@ -53,6 +67,7 @@ view: marketing_data {
   }
 
   dimension: app {
+    drill_fields: [source, adn_campaign_name, adn_sub_campaign_name, country_field]
     type: string
     sql: ${TABLE}."app" ;;
     description: "Application name."
@@ -91,6 +106,7 @@ view: marketing_data {
   dimension: os {
     label: "OS"
     type: string
+    drill_fields: [app, source, adn_campaign_name, adn_sub_campaign_name, country_field]
     sql: ${TABLE}."os" ;;
     description: "The user's device operating system, such as \"iOS\" or \"Android\""
   }

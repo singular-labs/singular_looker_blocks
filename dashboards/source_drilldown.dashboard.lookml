@@ -1,5 +1,5 @@
-- dashboard: high_level_overview
-  title: High Level Overview
+- dashboard: source_drilldown
+  title: Source Drilldown
   layout: newspaper
   elements:
   - title: Spend
@@ -32,9 +32,9 @@
     listen:
       Time Range: marketing_data.date_date
       Channel: marketing_data.source
-    row: 0
-    col: 15
-    width: 9
+    row: 3
+    col: 8
+    width: 5
     height: 3
   - title: Cost Per Conversion
     name: Cost Per Conversion
@@ -66,9 +66,9 @@
     listen:
       Time Range: marketing_data.date_date
       Channel: marketing_data.source
-    row: 3
-    col: 15
-    width: 9
+    row: 0
+    col: 8
+    width: 5
     height: 3
   - title: CPM
     name: CPM
@@ -104,8 +104,8 @@
       Time Range: marketing_data.date_date
       Channel: marketing_data.source
     row: 3
-    col: 4
-    width: 5
+    col: 0
+    width: 4
     height: 3
   - title: CTR
     name: CTR
@@ -143,63 +143,9 @@
       Time Range: marketing_data.date_date
       Channel: marketing_data.source
     row: 3
-    col: 9
-    width: 6
+    col: 4
+    width: 4
     height: 3
-  - title: Channel Level
-    name: Channel Level
-    model: singular_block
-    explore: marketing_data
-    type: looker_grid
-    fields: [marketing_data.source, marketing_data.impressions, marketing_data.ctr,
-      marketing_data.clicks, marketing_data.cvr, marketing_data.conversions, marketing_data.cost,
-      marketing_data.cpc, marketing_data.cpm]
-    filters: {}
-    sorts: [marketing_data.cvr desc]
-    limit: 500
-    column_limit: 50
-    show_totals: true
-    show_row_totals: true
-    show_view_names: false
-    show_row_numbers: true
-    transpose: false
-    truncate_text: true
-    size_to_fit: true
-    series_column_widths:
-      marketing_data.impressions: 100
-    series_cell_visualizations:
-      marketing_data.impressions:
-        is_active: false
-      marketing_data.clicks:
-        is_active: false
-      marketing_data.conversions:
-        is_active: true
-      marketing_data.cost:
-        is_active: true
-      marketing_data.cpc:
-        is_active: true
-      marketing_data.cpm:
-        is_active: true
-      marketing_data.cvr:
-        is_active: true
-      marketing_data.ctr:
-        is_active: true
-    table_theme: white
-    limit_displayed_rows: false
-    enable_conditional_formatting: false
-    header_text_alignment: left
-    header_font_size: '12'
-    rows_font_size: '12'
-    conditional_formatting_include_totals: false
-    conditional_formatting_include_nulls: false
-    series_types: {}
-    listen:
-      Time Range: marketing_data.date_date
-      Channel: marketing_data.source
-    row: 6
-    col: 0
-    width: 24
-    height: 6
   - title: Keyword Breakdown
     name: Keyword Breakdown
     model: singular_block
@@ -261,23 +207,9 @@
       Time Range: marketing_data.date_date
       Channel: marketing_data.source
     row: 0
-    col: 9
-    width: 6
-    height: 3
-  - title: "# Channels"
-    name: "# Channels"
-    model: singular_block
-    explore: marketing_data
-    type: single_value
-    fields: [marketing_data.total_channels]
-    limit: 500
-    listen:
-      Time Range: marketing_data.date_date
-      Channel: marketing_data.source
-    row: 0
-    col: 0
+    col: 4
     width: 4
-    height: 6
+    height: 3
   - title: CPC
     name: CPC
     model: singular_block
@@ -312,9 +244,152 @@
       Time Range: marketing_data.date_date
       Channel: marketing_data.source
     row: 0
-    col: 4
-    width: 5
+    col: 0
+    width: 4
     height: 3
+  - title: Campaign Level
+    name: Campaign Level
+    model: singular_block
+    explore: marketing_data
+    type: looker_grid
+    fields: [marketing_data.impressions, marketing_data.ctr, marketing_data.clicks,
+      marketing_data.cvr, marketing_data.conversions, marketing_data.cost, marketing_data.cpc,
+      marketing_data.cpm, marketing_data.adn_campaign_name]
+    filters: {}
+    sorts: [marketing_data.cost desc]
+    limit: 500
+    column_limit: 50
+    show_view_names: false
+    show_row_numbers: true
+    transpose: false
+    truncate_text: true
+    hide_totals: false
+    hide_row_totals: false
+    size_to_fit: true
+    table_theme: white
+    limit_displayed_rows: false
+    enable_conditional_formatting: false
+    header_text_alignment: left
+    header_font_size: '12'
+    rows_font_size: '12'
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    show_totals: true
+    show_row_totals: true
+    series_column_widths:
+      marketing_data.impressions: 100
+    series_cell_visualizations:
+      marketing_data.impressions:
+        is_active: false
+      marketing_data.clicks:
+        is_active: false
+      marketing_data.conversions:
+        is_active: true
+      marketing_data.cost:
+        is_active: true
+      marketing_data.cpc:
+        is_active: true
+      marketing_data.cpm:
+        is_active: true
+      marketing_data.cvr:
+        is_active: true
+      marketing_data.ctr:
+        is_active: true
+    series_types: {}
+    defaults_version: 1
+    listen:
+      Time Range: marketing_data.date_date
+      Channel: marketing_data.source
+    row: 6
+    col: 0
+    width: 24
+    height: 6
+  - title: CPC vs CTR
+    name: CPC vs CTR
+    model: singular_block
+    explore: marketing_data
+    type: looker_line
+    fields: [marketing_data.date_date, marketing_data.cpc, marketing_data.ctr]
+    filters:
+      marketing_data.cost: ">100"
+    sorts: [marketing_data.date_date desc]
+    limit: 500
+    column_limit: 50
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    show_view_names: false
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: false
+    show_x_axis_ticks: true
+    y_axis_scale_mode: linear
+    x_axis_reversed: false
+    y_axis_reversed: false
+    plot_size_by_field: false
+    trellis: ''
+    stacking: ''
+    limit_displayed_rows: false
+    legend_position: left
+    point_style: none
+    show_value_labels: false
+    label_density: 25
+    x_axis_scale: auto
+    y_axis_combined: true
+    show_null_points: true
+    interpolation: linear
+    y_axes: [{label: '', orientation: left, series: [{axisId: marketing_data.cpc,
+            id: marketing_data.cpc, name: CPC}], showLabels: false, showValues: true,
+        unpinAxis: false, tickDensity: default, type: linear}, {label: '', orientation: right,
+        series: [{axisId: marketing_data.ctr, id: marketing_data.ctr, name: CTR}],
+        showLabels: false, showValues: true, unpinAxis: false, tickDensity: default,
+        type: linear}]
+    hide_legend: true
+    series_types: {}
+    trend_lines: []
+    show_row_numbers: true
+    transpose: false
+    truncate_text: true
+    hide_totals: false
+    hide_row_totals: false
+    size_to_fit: true
+    table_theme: white
+    enable_conditional_formatting: false
+    header_text_alignment: left
+    header_font_size: '12'
+    rows_font_size: '12'
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    show_totals: true
+    show_row_totals: true
+    series_column_widths:
+      marketing_data.impressions: 100
+    series_cell_visualizations:
+      marketing_data.impressions:
+        is_active: false
+      marketing_data.clicks:
+        is_active: false
+      marketing_data.conversions:
+        is_active: true
+      marketing_data.cost:
+        is_active: true
+      marketing_data.cpc:
+        is_active: true
+      marketing_data.cpm:
+        is_active: true
+      marketing_data.cvr:
+        is_active: true
+      marketing_data.ctr:
+        is_active: true
+    defaults_version: 1
+    listen:
+      Time Range: marketing_data.date_date
+      Channel: marketing_data.source
+    row: 0
+    col: 13
+    width: 11
+    height: 6
   filters:
   - name: Time Range
     title: Time Range
@@ -329,7 +404,7 @@
   - name: Channel
     title: Channel
     type: field_filter
-    default_value: ''
+    default_value: AdWords
     allow_multiple_values: true
     required: false
     model: singular_block
