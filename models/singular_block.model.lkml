@@ -1,4 +1,4 @@
-connection: "etl_demo"
+connection: "singular_marketing"
 
 # include all the views
 include: "/views/**/*.view"

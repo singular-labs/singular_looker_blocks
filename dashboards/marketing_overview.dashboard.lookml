@@ -1,5 +1,5 @@
-- dashboard: high_level_overview
-  title: High Level Overview
+- dashboard: marketing_overview
+  title: Marketing Overview
   layout: newspaper
   elements:
   - title: Spend
