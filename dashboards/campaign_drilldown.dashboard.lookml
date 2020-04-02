@@ -75,93 +75,6 @@
     col: 4
     width: 4
     height: 3
-  - title: CPC vs CTR
-    name: CPC vs CTR
-    model: singular_block
-    explore: marketing_data
-    type: looker_line
-    fields: [marketing_data.date_date, marketing_data.cpc, marketing_data.ctr]
-    filters:
-      marketing_data.cost: ">100"
-    sorts: [marketing_data.date_date desc]
-    limit: 500
-    column_limit: 50
-    x_axis_gridlines: false
-    y_axis_gridlines: true
-    show_view_names: false
-    show_y_axis_labels: true
-    show_y_axis_ticks: true
-    y_axis_tick_density: default
-    y_axis_tick_density_custom: 5
-    show_x_axis_label: false
-    show_x_axis_ticks: true
-    y_axis_scale_mode: linear
-    x_axis_reversed: false
-    y_axis_reversed: false
-    plot_size_by_field: false
-    trellis: ''
-    stacking: ''
-    limit_displayed_rows: false
-    legend_position: left
-    point_style: none
-    show_value_labels: false
-    label_density: 25
-    x_axis_scale: auto
-    y_axis_combined: true
-    show_null_points: true
-    interpolation: linear
-    y_axes: [{label: '', orientation: left, series: [{axisId: marketing_data.cpc,
-            id: marketing_data.cpc, name: CPC}], showLabels: false, showValues: true,
-        unpinAxis: false, tickDensity: default, type: linear}, {label: '', orientation: right,
-        series: [{axisId: marketing_data.ctr, id: marketing_data.ctr, name: CTR}],
-        showLabels: false, showValues: true, unpinAxis: false, tickDensity: default,
-        type: linear}]
-    hide_legend: true
-    series_types: {}
-    trend_lines: []
-    show_row_numbers: true
-    transpose: false
-    truncate_text: true
-    hide_totals: false
-    hide_row_totals: false
-    size_to_fit: true
-    table_theme: white
-    enable_conditional_formatting: false
-    header_text_alignment: left
-    header_font_size: '12'
-    rows_font_size: '12'
-    conditional_formatting_include_totals: false
-    conditional_formatting_include_nulls: false
-    show_totals: true
-    show_row_totals: true
-    series_column_widths:
-      marketing_data.impressions: 100
-    series_cell_visualizations:
-      marketing_data.impressions:
-        is_active: false
-      marketing_data.clicks:
-        is_active: false
-      marketing_data.conversions:
-        is_active: true
-      marketing_data.cost:
-        is_active: true
-      marketing_data.cpc:
-        is_active: true
-      marketing_data.cpm:
-        is_active: true
-      marketing_data.cvr:
-        is_active: true
-      marketing_data.ctr:
-        is_active: true
-    defaults_version: 1
-    listen:
-      Time Range: marketing_data.date_date
-      Channel: marketing_data.source
-      Campaign: marketing_data.adn_campaign_name
-    row: 0
-    col: 13
-    width: 11
-    height: 6
   - title: CPM
     name: CPM
     model: singular_block
@@ -326,8 +239,8 @@
     col: 0
     width: 24
     height: 6
-  - title: Campaign Level
-    name: Campaign Level
+  - title: Sub Campaigns Breakdown
+    name: Sub Campaigns Breakdown
     model: singular_block
     explore: marketing_data
     type: looker_grid
@@ -385,6 +298,101 @@
     row: 6
     col: 0
     width: 24
+    height: 6
+  - title: Metrics Trend
+    name: Metrics Trend
+    model: singular_block
+    explore: marketing_data
+    type: looker_line
+    fields: [marketing_data.date_date, marketing_data.cpc, marketing_data.ctr, marketing_data.cpe,
+      marketing_data.cpm, marketing_data.cvr]
+    filters:
+      marketing_data.cost: ">100"
+    sorts: [marketing_data.date_date desc]
+    limit: 500
+    column_limit: 50
+    x_axis_gridlines: false
+    y_axis_gridlines: false
+    show_view_names: false
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: false
+    show_x_axis_ticks: true
+    y_axis_scale_mode: linear
+    x_axis_reversed: false
+    y_axis_reversed: false
+    plot_size_by_field: false
+    trellis: ''
+    stacking: ''
+    limit_displayed_rows: false
+    legend_position: center
+    point_style: circle_outline
+    show_value_labels: false
+    label_density: 25
+    x_axis_scale: auto
+    y_axis_combined: true
+    show_null_points: true
+    interpolation: monotone
+    y_axes: [{label: '', orientation: left, series: [{axisId: marketing_data.cpc,
+            id: marketing_data.cpc, name: CPC}], showLabels: false, showValues: false,
+        unpinAxis: true, tickDensity: default, type: linear}, {label: '', orientation: left,
+        series: [{axisId: marketing_data.cpe, id: marketing_data.cpe, name: Cost Per
+              Conversion}], showLabels: false, showValues: false, unpinAxis: true,
+        tickDensity: default, type: linear}, {label: '', orientation: left, series: [
+          {axisId: marketing_data.cpm, id: marketing_data.cpm, name: CPM}], showLabels: false,
+        showValues: false, unpinAxis: true, tickDensity: default, type: linear}, {
+        label: '', orientation: left, series: [{axisId: marketing_data.cvr, id: marketing_data.cvr,
+            name: CVR}], showLabels: false, showValues: false, unpinAxis: true, tickDensity: default,
+        type: linear}, {label: '', orientation: left, series: [{axisId: marketing_data.ctr,
+            id: marketing_data.ctr, name: CTR}], showLabels: false, showValues: false,
+        unpinAxis: true, tickDensity: default, type: linear}]
+    hide_legend: false
+    series_types: {}
+    trend_lines: []
+    show_row_numbers: true
+    transpose: false
+    truncate_text: true
+    hide_totals: false
+    hide_row_totals: false
+    size_to_fit: true
+    table_theme: white
+    enable_conditional_formatting: false
+    header_text_alignment: left
+    header_font_size: '12'
+    rows_font_size: '12'
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    show_totals: true
+    show_row_totals: true
+    series_column_widths:
+      marketing_data.impressions: 100
+    series_cell_visualizations:
+      marketing_data.impressions:
+        is_active: false
+      marketing_data.clicks:
+        is_active: false
+      marketing_data.conversions:
+        is_active: true
+      marketing_data.cost:
+        is_active: true
+      marketing_data.cpc:
+        is_active: true
+      marketing_data.cpm:
+        is_active: true
+      marketing_data.cvr:
+        is_active: true
+      marketing_data.ctr:
+        is_active: true
+    defaults_version: 1
+    listen:
+      Time Range: marketing_data.date_date
+      Channel: marketing_data.source
+      Campaign: marketing_data.adn_campaign_name
+    row: 0
+    col: 13
+    width: 11
     height: 6
   filters:
   - name: Time Range
