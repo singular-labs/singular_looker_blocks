@@ -398,7 +398,7 @@
   - name: Time Range
     title: Time Range
     type: field_filter
-    default_value: 7 days
+    default_value: this year
     allow_multiple_values: true
     required: false
     model: singular_block
@@ -408,7 +408,7 @@
   - name: Channel
     title: Channel
     type: field_filter
-    default_value: AdWords
+    default_value: ''
     allow_multiple_values: true
     required: false
     model: singular_block
