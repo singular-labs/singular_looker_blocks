@@ -20,13 +20,14 @@ Specific types of analysis are available upon implementing this block:
 
 ### Marketing Overview Dashboard
 Provides a high level channel level performance. use it to quickly identify which areas requires your attention
-ADD SCREENSHOT
+![Overview dashboard](https://i.imgur.com/gRhGtRz.png)
 
 
-### Source Analysis
+### Channel Analysis
 See perfromance of individual campaigns, see how your CPC(cost per click) affectes your CTR (click-through rate )
-ADD SCREENSHOT
+![channel analysis](https://i.imgur.com/MAeLdFI.png)
 
 ### Campaign Analysis
 See perfromance of individual sub-campaigns (or ad groups)
-ADD SCREENSHOT
+![campaign analysis](https://i.imgur.com/Npfh7ae.png)
+
