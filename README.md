@@ -25,9 +25,9 @@ Provides a high level channel level performance. use it to quickly identify whic
 
 ### Channel Analysis
 See perfromance of individual campaigns, see how your CPC(cost per click) affectes your CTR (click-through rate )
-![channel analysis](https://i.imgur.com/MAeLdFI.png)
+![channel analysis](https://i.imgur.com/Npfh7ae.png)
 
 ### Campaign Analysis
 See perfromance of individual sub-campaigns (or ad groups)
-![campaign analysis](https://i.imgur.com/Npfh7ae.png)
+![campaign analysis](https://i.imgur.com/MAeLdFI.png)
 
